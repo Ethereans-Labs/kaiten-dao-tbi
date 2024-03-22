@@ -1,0 +1,44 @@
+require('dotenv').config();
+var Web3 = require('web3');
+
+var fs = require('fs');
+var path = require('path');
+
+var out = {}
+
+var file = path.resolve(__dirname, "output", 'output.json')
+
+try {
+    out = JSON.parse(fs.readFileSync(file, 'utf-8'))
+} catch (e) {}
+
+function save() {
+    try {
+        fs.unlinkSync(file)
+    } catch (e) {}
+    try {
+        fs.writeFileSync(file, JSON.stringify(out, null, 4))
+    } catch (e) {}
+}
+
+var tokenAddress = "0x899d774E0f8E14810D628Db63e65dfAcEa682343";
+var web3 = new Web3.Web3(process.env.BLOCKCHAIN_CONNECTION_STRING);
+var abi = [{"inputs":[{"components":[{"internalType":"uint256","name":"bootstrapStarts","type":"uint256"},{"internalType":"address","name":"marketingAddress","type":"address"},{"internalType":"address","name":"bootstrapAddress","type":"address"},{"internalType":"address","name":"treasuryAddress","type":"address"},{"internalType":"uint256","name":"actualPriceWindow","type":"uint256"},{"internalType":"uint256[]","name":"availableTokensPerWindow","type":"uint256[]"},{"internalType":"uint256[]","name":"pricesPerWindow","type":"uint256[]"},{"internalType":"address","name":"treasuryBootstrapRevenueShareAddress","type":"address"},{"internalType":"uint256","name":"treasuryBootstrapFirstRevenueShareAmount","type":"uint256"},{"internalType":"uint256","name":"treasuryBalance","type":"uint256"},{"internalType":"uint256","name":"treasuryBootstrapAdditionalLiquidity","type":"uint256"},{"internalType":"address","name":"treasuryBootstrapRevenueShareOperator","type":"address"},{"internalType":"uint256","name":"bootstrapEnds","type":"uint256"},{"internalType":"uint256","name":"antiWhaleSystemEnds","type":"uint256"},{"internalType":"uint256","name":"mintReleaseStarts","type":"uint256"},{"internalType":"uint256","name":"collectedETH","type":"uint256"},{"internalType":"uint256","name":"purchasedSupply","type":"uint256"}],"internalType":"struct TreasuryBootstrap.Storage","name":"__storage","type":"tuple"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes4","name":"signature","type":"bytes4"},{"indexed":true,"internalType":"address","name":"oldValue","type":"address"},{"indexed":true,"internalType":"address","name":"newValue","type":"address"},{"indexed":false,"internalType":"string","name":"method","type":"string"}],"name":"FunctionManager","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes4","name":"signature","type":"bytes4"},{"indexed":true,"internalType":"address","name":"oldValue","type":"address"},{"indexed":true,"internalType":"address","name":"newValue","type":"address"},{"indexed":false,"internalType":"string","name":"method","type":"string"}],"name":"FunctionManager","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"stateMutability":"payable","type":"fallback"},{"inputs":[],"name":"_storage","outputs":[{"components":[{"internalType":"uint256","name":"bootstrapStarts","type":"uint256"},{"internalType":"address","name":"marketingAddress","type":"address"},{"internalType":"address","name":"bootstrapAddress","type":"address"},{"internalType":"address","name":"treasuryAddress","type":"address"},{"internalType":"uint256","name":"actualPriceWindow","type":"uint256"},{"internalType":"uint256[]","name":"availableTokensPerWindow","type":"uint256[]"},{"internalType":"uint256[]","name":"pricesPerWindow","type":"uint256[]"},{"internalType":"address","name":"treasuryBootstrapRevenueShareAddress","type":"address"},{"internalType":"uint256","name":"treasuryBootstrapFirstRevenueShareAmount","type":"uint256"},{"internalType":"uint256","name":"treasuryBalance","type":"uint256"},{"internalType":"uint256","name":"treasuryBootstrapAdditionalLiquidity","type":"uint256"},{"internalType":"address","name":"treasuryBootstrapRevenueShareOperator","type":"address"},{"internalType":"uint256","name":"bootstrapEnds","type":"uint256"},{"internalType":"uint256","name":"antiWhaleSystemEnds","type":"uint256"},{"internalType":"uint256","name":"mintReleaseStarts","type":"uint256"},{"internalType":"uint256","name":"collectedETH","type":"uint256"},{"internalType":"uint256","name":"purchasedSupply","type":"uint256"}],"internalType":"struct TreasuryBootstrap.Storage","name":"","type":"tuple"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"treasuryAddress","type":"address"},{"internalType":"address[]","name":"receivers","type":"address[]"},{"internalType":"uint256[]","name":"amounts","type":"uint256[]"}],"name":"completeInitialization","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"disableAntiWhaleSystem","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"method","type":"string"}],"name":"functionManager","outputs":[{"internalType":"address","name":"value","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes4","name":"signature","type":"bytes4"}],"name":"functionManagerBySignature","outputs":[{"internalType":"address","name":"value","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string[]","name":"methods","type":"string[]"}],"name":"functionsManagers","outputs":[{"internalType":"address[]","name":"values","type":"address[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_seconds","type":"uint256"}],"name":"increaseMintOwnershipReleaseTime","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"mint","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"location","type":"address"}],"name":"setFinalNameAndSymbol","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"tryDisableAntiWhaleSystem","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"tryFinalizeBootstrapAndEnableAntiWhaleSystem","outputs":[{"internalType":"bool","name":"disable","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"stateMutability":"payable","type":"receive"}];
+async function main() {
+
+    var token = new web3.eth.Contract(abi, tokenAddress);
+
+    var response = await token.methods._storage().call();
+
+    out = {
+        tokenAddress,
+        ethToCollect : 512,
+        ethCollected : parseFloat(web3.utils.fromWei(response.collectedETH, 'ether')),
+        tokensDistributed : parseFloat(web3.utils.fromWei(response.purchasedSupply, 'ether')),
+        bootstrapEnds : parseInt(response.bootstrapEnds) * 1000
+    }
+
+    save();
+}
+
+main().catch(console.log)

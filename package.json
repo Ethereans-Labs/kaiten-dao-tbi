@@ -1,0 +1,16 @@
+{
+  "name": "@ethereans-labs/kaiten-dao-tbi",
+  "version": "1.0.0",
+  "description": "The Kaiten DAO Treasury Bootstrap Initiative",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "web3": "^4.3.0"
+  }
+}
