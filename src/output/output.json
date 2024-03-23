@@ -1,7 +1,7 @@
 {
     "tokenAddress": "0x899d774E0f8E14810D628Db63e65dfAcEa682343",
     "ethToCollect": 512,
-    "ethCollected": 436,
+    "ethCollected": 436.80453,
     "tokensDistributed": 6919779,
     "bootstrapEnds": 1712158167000
 }
